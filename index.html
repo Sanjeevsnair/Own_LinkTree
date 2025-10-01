@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Links</title>
+    <title>Sanjeev S Nair - Links</title>
     <style>
         * {
             margin: 0;
@@ -46,13 +46,6 @@
             justify-content: center;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-
-
         .title-section {
             position: relative;
             text-align: center;
@@ -63,7 +56,6 @@
             font-weight: 800;
             letter-spacing: -2px;
             line-height: 1;
-            margin-bottom: 10px;
         }
 
         .main-title .line1 {
@@ -222,14 +214,12 @@
         .card-icon {
             width: 50px;
             height: 50px;
-            /* background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%); */
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
             flex-shrink: 0;
-            /* box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3); */
         }
 
         .card-content {
@@ -249,6 +239,7 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
+        /* Mobile Responsive Styles */
         @media (max-width: 1024px) {
             .content-wrapper {
                 height: 500px;
@@ -258,6 +249,11 @@
                 width: 400px;
                 height: 400px;
             }
+            
+            .floating-card {
+                width: 160px;
+                padding: 14px 16px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -266,34 +262,38 @@
             }
             
             .content-wrapper {
-                height: auto;
+                height: 500px;
                 flex-direction: column;
             }
             
             .character-container {
                 width: 300px;
                 height: 300px;
-                margin-bottom: 40px;
+                margin-bottom: 0;
             }
             
             .floating-card {
-                position: relative;
-                margin: 10px auto;
-                width: 250px;
-                animation: none;
+                width: 140px;
+                padding: 12px 14px;
             }
             
-            .card-1, .card-2, .card-3, .card-4, 
-            .card-5, .card-6, .card-7, .card-8,
-            .card-9, .card-10, .card-11, .card-12,
-            .card-13, .card-14, .card-15, .card-16 {
-                position: relative;
-                top: auto;
-                left: auto;
-                right: auto;
-                bottom: auto;
-                animation: none;
+            .card-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
             }
+            
+            .card-title {
+                font-size: 14px;
+            }
+            
+            /* Adjust card positions for mobile */
+            .card-9 { top: 47%; left: 5%; }
+            .card-10 { top: 40%; right: 5%; }
+            .card-13 { top: 25%; left: 5%; }
+            .card-14 { top: 25%; right: 5%; }
+            .card-15 { bottom: 25%; left: 5%; }
+            .card-16 { bottom: 25%; right: 5%; }
         }
         
         @media (max-width: 480px) {
@@ -301,12 +301,38 @@
                 width: 250px;
                 height: 250px;
             }
+            
+            .content-wrapper {
+                height: 450px;
+            }
+            
+            .floating-card {
+                width: 130px;
+                padding: 10px 10px;
+            }
+            
+            .card-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+            
+            .card-title {
+                font-size: 13px;
+            }
+            
+            /* Further adjust card positions for very small screens */
+            .card-9 { top: 47%; left: 2%; }
+            .card-10 { top: 40%; right: 2%; }
+            .card-13 { top: 20%; left: 2%; }
+            .card-14 { top: 20%; right: 2%; }
+            .card-15 { bottom: 20%; left: 2%; }
+            .card-16 { bottom: 20%; right: 2%; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-
         <div class="title-section">
             <h1 class="main-title">
                 <span class="line1">SANJEEV S NAIR</span>
@@ -320,128 +346,47 @@
                 </div>
             </div>
 
-            <!-- 16 floating cards with different positions and animations -->
-            <!-- <a href="#" class="floating-card card-1">
-                <div class="card-icon">💼</div>
-                <div class="card-content">
-                    <div class="card-title">Portfolio</div>
-                    <div class="card-description">View my work</div>
-                </div>
-            </a> -->
-
-            <!-- <a href="#" class="floating-card card-2">
-                <div class="card-icon">📧</div>
-                <div class="card-content">
-                    <div class="card-title">Contact</div>
-                    <div class="card-description">Get in touch</div>
-                </div>
-            </a> -->
-
-            <!-- <a href="#" class="floating-card card-3">
-                <div class="card-icon">📱</div>
-                <div class="card-content">
-                    <div class="card-title">Social Media</div>
-                    <div class="card-description">Follow me</div>
-                </div>
-            </a> -->
-
-            <!-- <a href="#" class="floating-card card-4">
-                <div class="card-icon">📄</div>
-                <div class="card-content">
-                    <div class="card-title">Resume</div>
-                    <div class="card-description">Download CV</div>
-                </div>
-            </a> -->
-
-            <!-- <a href="#" class="floating-card card-5">
-                <div class="card-icon">🎨</div>
-                <div class="card-content">
-                    <div class="card-title">Designs</div>
-                    <div class="card-description">Creative work</div>
-                </div>
-            </a> -->
-
-            <!-- <a href="#" class="floating-card card-6">
-                <div class="card-icon">📚</div>
-                <div class="card-content">
-                    <div class="card-title">Blog</div>
-                    <div class="card-description">Read articles</div>
-                </div>
-            </a> -->
-
-            <!-- <a href="#" class="floating-card card-7">
-                <div class="card-icon">🎬</div>
-                <div class="card-content">
-                    <div class="card-title">Videos</div>
-                    <div class="card-description">Watch content</div>
-                </div>
-            </a> -->
-
-            <!-- <a href="#" class="floating-card card-8">
-                <div class="card-icon">🛒</div>
-                <div class="card-content">
-                    <div class="card-title">Store</div>
-                    <div class="card-description">Buy products</div>
-                </div>
-            </a> -->
-
             <a href="https://github.com/Sanjeevsnair" class="floating-card card-9">
-                <img class="card-icon" src="github.png"> </img>
+                <img class="card-icon" src="github.png" alt="GitHub"> 
                 <div class="card-content">
                     <div class="card-title">Github</div>
                 </div>
             </a>
 
             <a href="https://www.linkedin.com/in/sanjeev-s-nair-346241291/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="floating-card card-10">
-                <img class="card-icon" src="linkedin-logo.png"> </img>
+                <img class="card-icon" src="linkedin-logo.png" alt="LinkedIn"> 
                 <div class="card-content">
                     <div class="card-title">LinkedIn</div>
                 </div>
             </a>
 
-            <!-- <a href="#" class="floating-card card-11">
-                <div class="card-icon">📋</div>
-                <div class="card-content">
-                    <div class="card-title">Projects</div>
-                    <div class="card-description">Case studies</div>
-                </div>
-            </a> -->
-
-            <!-- <a href="#" class="floating-card card-12">
-                <div class="card-icon">💬</div>
-                <div class="card-content">
-                    <div class="card-title">Feedback</div>
-                    <div class="card-description">Share thoughts</div>
-                </div>
-            </a> -->
-
             <a href="https://wa.me/qr/NY3RZLESQ6NIB1" class="floating-card card-13">
-                <img class="card-icon" src="whatsapp-logo.png"> </img>
+                <img class="card-icon" src="whatsapp-logo.png" alt="WhatsApp"> 
                 <div class="card-content">
                     <div class="card-title">Whatsapp</div>
                 </div>
             </a>
 
             <a href="https://www.instagram.com/_sa.nj.eev_?igsh=d3E4Y2ZyYWU0Nnhw" class="floating-card card-14">
-                <img class="card-icon" src="instagram-logo.png"> </img>
+                <img class="card-icon" src="instagram-logo.png" alt="Instagram"> 
                 <div class="card-content">
                     <div class="card-title">Instagram</div>
                 </div>
             </a>
 
             <a href="tel:+917306295461" class="floating-card card-15">
-    <img class="card-icon" src="3d Realistic Call Icon illustration.png" alt="Call Icon">
-    <div class="card-content">
-        <div class="card-title">Contacts</div>
-    </div>
-</a>
+                <img class="card-icon" src="3d Realistic Call Icon illustration.png" alt="Call Icon">
+                <div class="card-content">
+                    <div class="card-title">Contacts</div>
+                </div>
+            </a>
 
-<a href="mailto:sanjeevsnair1412@gmail.com" class="floating-card card-16">
-    <img class="card-icon" src="7915362.webp" alt="Email Icon">
-    <div class="card-content">
-        <div class="card-title">Email</div>
-    </div>
-</a>
+            <a href="mailto:sanjeevsnair1412@gmail.com" class="floating-card card-16">
+                <img class="card-icon" src="7915362.webp" alt="Email Icon">
+                <div class="card-content">
+                    <div class="card-title">Email</div>
+                </div>
+            </a>
         </div>
     </div>
 </body>
