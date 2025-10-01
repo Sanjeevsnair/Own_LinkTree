@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Links</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+
+
+        .title-section {
+            position: relative;
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: clamp(48px, 10vw, 72px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .main-title .line1 {
+            color: #fff;
+            display: block;
+        }
+
+        .main-title .line2 {
+            color: #00d4ff;
+            display: block;
+        }
+
+        .content-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 600px;
+        }
+
+        .character-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .character-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .character-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 3;
+            width: 180px;
+        }
+
+        .floating-card:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Card positions with overlaps */
+        .card-1 { top: 5%; left: 15%; animation: float1 4s ease-in-out infinite; }
+        .card-2 { top: 5%; right: 15%; animation: float2 5s ease-in-out infinite; }
+        .card-3 { bottom: 5%; left: 15%; animation: float3 4.5s ease-in-out infinite; }
+        .card-4 { bottom: 5%; right: 15%; animation: float4 5.5s ease-in-out infinite; }
+        .card-5 { top: 20%; left: 5%; animation: float5 6s ease-in-out infinite; }
+        .card-6 { top: 20%; right: 5%; animation: float6 4.2s ease-in-out infinite; }
+        .card-7 { bottom: 20%; left: 5%; animation: float7 5.2s ease-in-out infinite; }
+        .card-8 { bottom: 20%; right: 5%; animation: float8 4.8s ease-in-out infinite; }
+        .card-9 { top: 45%; left: 25%; animation: float9 5.7s ease-in-out infinite; }
+        .card-10 { top: 40%; right: 28%; animation: float10 4.3s ease-in-out infinite; }
+        .card-11 { bottom: 35%; left: 0%; animation: float11 5.3s ease-in-out infinite; }
+        .card-12 { bottom: 35%; right: 0%; animation: float12 4.9s ease-in-out infinite; }
+        .card-13 { top: 10%; left: 25%; animation: float13 6.2s ease-in-out infinite; }
+        .card-14 { top: 15%; right: 25%; animation: float14 5.4s ease-in-out infinite; }
+        .card-15 { bottom: 17%; left: 30%; animation: float15 4.6s ease-in-out infinite; }
+        .card-16 { bottom: 13%; right: 25%; animation: float16 5.8s ease-in-out infinite; }
+
+        /* Unique floating animations for each card */
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-10px, -15px); }
+        }
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(10px, -15px); }
+        }
+        @keyframes float3 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-10px, 15px); }
+        }
+        @keyframes float4 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(10px, 15px); }
+        }
+        @keyframes float5 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-15px, -10px); }
+        }
+        @keyframes float6 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(15px, -10px); }
+        }
+        @keyframes float7 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-15px, 10px); }
+        }
+        @keyframes float8 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(15px, 10px); }
+        }
+        @keyframes float9 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -5px); }
+        }
+        @keyframes float10 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -5px); }
+        }
+        @keyframes float11 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, 5px); }
+        }
+        @keyframes float12 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 5px); }
+        }
+        @keyframes float13 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-5px, -20px); }
+        }
+        @keyframes float14 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(5px, -20px); }
+        }
+        @keyframes float15 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-5px, 20px); }
+        }
+        @keyframes float16 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(5px, 20px); }
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            /* background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%); */
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            /* box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3); */
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .card-description {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                height: 500px;
+            }
+            
+            .character-container {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .content-wrapper {
+                height: auto;
+                flex-direction: column;
+            }
+            
+            .character-container {
+                width: 300px;
+                height: 300px;
+                margin-bottom: 40px;
+            }
+            
+            .floating-card {
+                position: relative;
+                margin: 10px auto;
+                width: 250px;
+                animation: none;
+            }
+            
+            .card-1, .card-2, .card-3, .card-4, 
+            .card-5, .card-6, .card-7, .card-8,
+            .card-9, .card-10, .card-11, .card-12,
+            .card-13, .card-14, .card-15, .card-16 {
+                position: relative;
+                top: auto;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                animation: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .character-container {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="title-section">
+            <h1 class="main-title">
+                <span class="line1">SANJEEV S NAIR</span>
+            </h1>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="character-container">
+                <div class="character-placeholder">
+                    <img src="vecteezy_ai-generated-3d-cute-businessman-cartoon_41278645.png" alt="Business character">
+                </div>
+            </div>
+
+            <!-- 16 floating cards with different positions and animations -->
+            <!-- <a href="#" class="floating-card card-1">
+                <div class="card-icon">💼</div>
+                <div class="card-content">
+                    <div class="card-title">Portfolio</div>
+                    <div class="card-description">View my work</div>
+                </div>
+            </a> -->
+
+            <!-- <a href="#" class="floating-card card-2">
+                <div class="card-icon">📧</div>
+                <div class="card-content">
+                    <div class="card-title">Contact</div>
+                    <div class="card-description">Get in touch</div>
+                </div>
+            </a> -->
+
+            <!-- <a href="#" class="floating-card card-3">
+                <div class="card-icon">📱</div>
+                <div class="card-content">
+                    <div class="card-title">Social Media</div>
+                    <div class="card-description">Follow me</div>
+                </div>
+            </a> -->
+
+            <!-- <a href="#" class="floating-card card-4">
+                <div class="card-icon">📄</div>
+                <div class="card-content">
+                    <div class="card-title">Resume</div>
+                    <div class="card-description">Download CV</div>
+                </div>
+            </a> -->
+
+            <!-- <a href="#" class="floating-card card-5">
+                <div class="card-icon">🎨</div>
+                <div class="card-content">
+                    <div class="card-title">Designs</div>
+                    <div class="card-description">Creative work</div>
+                </div>
+            </a> -->
+
+            <!-- <a href="#" class="floating-card card-6">
+                <div class="card-icon">📚</div>
+                <div class="card-content">
+                    <div class="card-title">Blog</div>
+                    <div class="card-description">Read articles</div>
+                </div>
+            </a> -->
+
+            <!-- <a href="#" class="floating-card card-7">
+                <div class="card-icon">🎬</div>
+                <div class="card-content">
+                    <div class="card-title">Videos</div>
+                    <div class="card-description">Watch content</div>
+                </div>
+            </a> -->
+
+            <!-- <a href="#" class="floating-card card-8">
+                <div class="card-icon">🛒</div>
+                <div class="card-content">
+                    <div class="card-title">Store</div>
+                    <div class="card-description">Buy products</div>
+                </div>
+            </a> -->
+
+            <a href="https://github.com/Sanjeevsnair" class="floating-card card-9">
+                <img class="card-icon" src="github.png"> </img>
+                <div class="card-content">
+                    <div class="card-title">Github</div>
+                </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/sanjeev-s-nair-346241291/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="floating-card card-10">
+                <img class="card-icon" src="linkedin-logo.png"> </img>
+                <div class="card-content">
+                    <div class="card-title">LinkedIn</div>
+                </div>
+            </a>
+
+            <!-- <a href="#" class="floating-card card-11">
+                <div class="card-icon">📋</div>
+                <div class="card-content">
+                    <div class="card-title">Projects</div>
+                    <div class="card-description">Case studies</div>
+                </div>
+            </a> -->
+
+            <!-- <a href="#" class="floating-card card-12">
+                <div class="card-icon">💬</div>
+                <div class="card-content">
+                    <div class="card-title">Feedback</div>
+                    <div class="card-description">Share thoughts</div>
+                </div>
+            </a> -->
+
+            <a href="https://wa.me/qr/NY3RZLESQ6NIB1" class="floating-card card-13">
+                <img class="card-icon" src="whatsapp-logo.png"> </img>
+                <div class="card-content">
+                    <div class="card-title">Whatsapp</div>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/_sa.nj.eev_?igsh=d3E4Y2ZyYWU0Nnhw" class="floating-card card-14">
+                <img class="card-icon" src="instagram-logo.png"> </img>
+                <div class="card-content">
+                    <div class="card-title">Instagram</div>
+                </div>
+            </a>
+
+            <a href="tel:+917306295461" class="floating-card card-15">
+    <img class="card-icon" src="3d Realistic Call Icon illustration.png" alt="Call Icon">
+    <div class="card-content">
+        <div class="card-title">Contacts</div>
+    </div>
+</a>
+
+<a href="mailto:sanjeevsnair1412@gmail.com" class="floating-card card-16">
+    <img class="card-icon" src="7915362.webp" alt="Email Icon">
+    <div class="card-content">
+        <div class="card-title">Email</div>
+    </div>
+</a>
+        </div>
+    </div>
+</body>
+</html>
